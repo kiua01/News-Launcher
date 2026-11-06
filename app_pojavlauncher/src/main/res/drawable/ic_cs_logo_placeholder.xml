@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- News Launcher brand mark (default profile icon): dark tile, white N, blue accent. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <path
+        android:fillColor="#0B1020"
+        android:pathData="M12,4 L36,4 Q44,4 44,12 L44,36 Q44,44 36,44 L12,44 Q4,44 4,36 L4,12 Q4,4 12,4 Z" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#40FFFFFF"
+        android:strokeWidth="1"
+        android:pathData="M12,5.5 L36,5.5 Q42.5,5.5 42.5,12 L42.5,36 Q42.5,42.5 36,42.5 L12,42.5 Q5.5,42.5 5.5,36 L5.5,12 Q5.5,5.5 12,5.5 Z" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#F2F4FA"
+        android:strokeWidth="4.6"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M15,34 L15,14 L33,34 L33,14" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#4F9BFF"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:pathData="M15,39 L33,39" />
+</vector>

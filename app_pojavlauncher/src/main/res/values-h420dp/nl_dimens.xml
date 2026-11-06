@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="nl_player_w">118dp</dimen>
+    <dimen name="nl_player_h">164dp</dimen>
+    <dimen name="nl_hero_title">24sp</dimen>
+    <dimen name="nl_hero_sub">12sp</dimen>
+    <item name="nl_hero_bottom" format="float" type="dimen">0.60</item>
+</resources>

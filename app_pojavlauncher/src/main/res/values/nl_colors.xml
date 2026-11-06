@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- News Launcher "cream glass" home theme -->
+    <color name="nl_cream">#FFF4E4</color>
+    <color name="nl_peach">#F4C9B8</color>
+    <color name="nl_card">#E8FFF8EE</color>
+    <color name="nl_ink">#2A1B10</color>
+    <color name="nl_ink_soft">#7C6A5B</color>
+    <color name="nl_gold">#FFC83D</color>
+    <color name="nl_gold_light">#FFE08A</color>
+    <color name="nl_gold_dark">#F29E1B</color>
+</resources>

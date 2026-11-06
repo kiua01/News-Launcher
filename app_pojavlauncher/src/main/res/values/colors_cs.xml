@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NEWS LAUNCHER — Blue Theme -->
+<resources>
+    <!-- Base layers -->
+    <color name="cs_bg_base">#0A1628</color>
+    <color name="cs_bg_surface">#0F1E33</color>
+    <color name="cs_bg_elevated">#152A45</color>
+    <color name="cs_bg_overlay">#1A3355</color>
+
+    <!-- Glass -->
+    <color name="cs_glass_fill">#0F3B82F6</color>
+    <color name="cs_glass_fill_strong">#1A3B82F6</color>
+    <color name="cs_glass_stroke">#263B82F6</color>
+    <color name="cs_glass_stroke_soft">#1A60A5FA</color>
+
+    <!-- Primary accent — Electric Blue -->
+    <color name="cs_accent">#3B82F6</color>
+    <color name="cs_accent_deep">#2563EB</color>
+    <color name="cs_accent_light">#60A5FA</color>
+    <color name="cs_accent_soft">#333B82F6</color>
+    <color name="cs_accent_glow">#403B82F6</color>
+
+    <!-- Glow accent -->
+    <color name="cs_violet">#60A5FA</color>
+    <color name="cs_violet_deep">#3B82F6</color>
+    <color name="cs_violet_soft">#333B82F6</color>
+
+    <!-- Legacy alias -->
+    <color name="cs_cyan">#38BDF8</color>
+
+    <!-- Semantic -->
+    <color name="cs_success">#22C55E</color>
+    <color name="cs_success_soft">#2622C55E</color>
+    <color name="cs_danger">#FF4444</color>
+    <color name="cs_danger_deep">#D63A3A</color>
+    <color name="cs_danger_soft">#26FF4444</color>
+    <color name="cs_warning">#FFB020</color>
+    <color name="cs_warning_soft">#26FFB020</color>
+
+    <!-- Text -->
+    <color name="cs_text_primary">#F0F7FF</color>
+    <color name="cs_text_secondary">#93C5FD</color>
+    <color name="cs_text_dim">#64748B</color>
+    <color name="cs_text_on_accent">#FFFFFF</color>
+    <color name="cs_text_accent">#60A5FA</color>
+</resources>

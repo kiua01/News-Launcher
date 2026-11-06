@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- News Launcher sidebar dock: cream glass card, icon + label, gold pill on the active page.
+     Included by the launcher activity so it stays persistent across every page. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lh_dock"
+    android:layout_width="@dimen/lh_dock_width"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@drawable/bg_nl_dock"
+    android:paddingHorizontal="4dp"
+    android:paddingVertical="6dp">
+
+    <LinearLayout
+        android:id="@+id/lh_nav_home"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginVertical="2dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/bg_nl_dock_item"
+        android:clickable="true"
+        android:focusable="true">
+        <ImageView
+            android:layout_width="@dimen/lh_dock_icon_inner"
+            android:layout_height="@dimen/lh_dock_icon_inner"
+            android:src="@drawable/ic_menu_home"
+            app:tint="@color/nl_dock_tint"
+            android:contentDescription="Home" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="Home"
+            android:textColor="@color/nl_dock_tint"
+            android:textSize="8sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lh_nav_skins"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginVertical="2dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/bg_nl_dock_item"
+        android:clickable="true"
+        android:focusable="true">
+        <ImageView
+            android:layout_width="@dimen/lh_dock_icon_inner"
+            android:layout_height="@dimen/lh_dock_icon_inner"
+            android:src="@drawable/ic_nav_skin"
+            app:tint="@color/nl_dock_tint"
+            android:contentDescription="Skins" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="Skins"
+            android:textColor="@color/nl_dock_tint"
+            android:textSize="8sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lh_nav_market"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginVertical="2dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/bg_nl_dock_item"
+        android:clickable="true"
+        android:focusable="true">
+        <ImageView
+            android:layout_width="@dimen/lh_dock_icon_inner"
+            android:layout_height="@dimen/lh_dock_icon_inner"
+            android:src="@drawable/ic_nav_mods"
+            app:tint="@color/nl_dock_tint"
+            android:contentDescription="Market" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="Market"
+            android:textColor="@color/nl_dock_tint"
+            android:textSize="8sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lh_nav_cursor"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginVertical="2dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/bg_nl_dock_item"
+        android:clickable="true"
+        android:focusable="true">
+        <ImageView
+            android:layout_width="@dimen/lh_dock_icon_inner"
+            android:layout_height="@dimen/lh_dock_icon_inner"
+            android:src="@drawable/ic_mouse_pointer"
+            app:tint="@color/nl_dock_tint"
+            android:contentDescription="Cursor" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="Cursor"
+            android:textColor="@color/nl_dock_tint"
+            android:textSize="8sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lh_nav_controls"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginVertical="2dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/bg_nl_dock_item"
+        android:clickable="true"
+        android:focusable="true">
+        <ImageView
+            android:layout_width="@dimen/lh_dock_icon_inner"
+            android:layout_height="@dimen/lh_dock_icon_inner"
+            android:src="@drawable/ic_menu_custom_controls"
+            app:tint="@color/nl_dock_tint"
+            android:contentDescription="Controls" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="Controls"
+            android:textColor="@color/nl_dock_tint"
+            android:textSize="8sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lh_nav_settings"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginVertical="2dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/bg_nl_dock_item"
+        android:clickable="true"
+        android:focusable="true">
+        <ImageView
+            android:layout_width="@dimen/lh_dock_icon_inner"
+            android:layout_height="@dimen/lh_dock_icon_inner"
+            android:src="@drawable/ic_menu_settings"
+            app:tint="@color/nl_dock_tint"
+            android:contentDescription="Settings" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="Settings"
+            android:textColor="@color/nl_dock_tint"
+            android:textSize="8sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lh_nav_about"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginVertical="2dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/bg_nl_dock_item"
+        android:clickable="true"
+        android:focusable="true">
+        <ImageView
+            android:layout_width="@dimen/lh_dock_icon_inner"
+            android:layout_height="@dimen/lh_dock_icon_inner"
+            android:src="@drawable/ic_info"
+            app:tint="@color/nl_dock_tint"
+            android:contentDescription="About" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="About"
+            android:textColor="@color/nl_dock_tint"
+            android:textSize="8sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>

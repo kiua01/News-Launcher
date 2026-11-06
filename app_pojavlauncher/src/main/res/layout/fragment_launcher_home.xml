@@ -1,0 +1,968 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- News Launcher home: cream "glass" cards (hero + installations on the left, news / quick links / community on the right).
+     Every view id the Java relies on (lh_*) is kept; the nl_* views are the new tiles. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_nl_home">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lh_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/lh_center_guide"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.655" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/nl_gl_h"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="@dimen/nl_hero_bottom" />
+
+        <!-- ───────── TOP BAR: brand · search · notifications · controls · account ───────── -->
+        <LinearLayout
+            android:id="@+id/nl_topbar"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/lh_brand_cluster"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:id="@+id/lh_brand_mark"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:src="@drawable/cs_logo"
+                    android:contentDescription="News Launcher" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/lh_brand_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
+                        android:letterSpacing="0.06"
+                        android:text="NEWS LAUNCHER"
+                        android:textColor="@color/nl_ink"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/lh_brand_sub"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:includeFontPadding="false"
+                        android:letterSpacing="0.08"
+                        android:text="MINECRAFT JAVA LAUNCHER"
+                        android:textColor="@color/nl_ink_soft"
+                        android:textSize="7.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/nl_search"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_nl_pill"
+                android:paddingHorizontal="12dp"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_search"
+                    app:tint="@color/nl_ink_soft"
+                    android:contentDescription="Search" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:ellipsize="end"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:text="Search mods, modpacks and skins…"
+                    android:textColor="@color/nl_ink_soft"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/nl_bell"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_nl_circle"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_settings_notification"
+                    app:tint="@color/nl_ink"
+                    android:contentDescription="Notifications" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/nl_controls"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_nl_circle"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_menu_custom_controls"
+                    app:tint="@color/nl_ink"
+                    android:contentDescription="Controls" />
+            </FrameLayout>
+
+            <LinearLayout
+                        android:id="@+id/lh_account_chip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:background="@drawable/bg_nl_pill"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="10dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:layout_marginStart="8dp">
+
+                        <ImageView
+                            android:id="@+id/lh_account_head"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:scaleType="centerCrop"
+                            android:background="@drawable/bg_lh_card_icon"
+                            android:padding="2dp"
+                            android:src="@drawable/ic_profile_player"
+                            app:tint="#38BDF8"
+                            android:contentDescription="Account" />
+
+                        <TextView
+                            android:id="@+id/lh_account_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:maxWidth="110dp"
+                            android:singleLine="true"
+                            android:ellipsize="end"
+                            android:text="Player"
+                            android:textColor="@color/nl_ink"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:includeFontPadding="false" />
+
+                        <TextView
+                            android:id="@+id/lh_account_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="7dp"
+                            android:text="LOCAL"
+                            android:textColor="#FFFFFF"
+                            android:textSize="8.5sp"
+                            android:textStyle="bold"
+                            android:letterSpacing="0.06"
+                            android:paddingHorizontal="7dp"
+                            android:paddingVertical="3dp"
+                            android:background="@drawable/bg_hd_badge_purple"
+                            android:includeFontPadding="false" />
+
+                        <ImageView
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/ic_chevron_down"
+                            app:tint="@color/nl_ink_soft"
+                            android:contentDescription="@null" />
+                    </LinearLayout>
+        </LinearLayout>
+
+        <!-- ───────── HERO CARD ───────── -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/nl_hero"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/bg_nl_hero"
+            android:clipToOutline="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/lh_center_guide"
+            app:layout_constraintTop_toBottomOf="@id/nl_topbar"
+            app:layout_constraintBottom_toTopOf="@id/nl_gl_h">
+
+            <ImageView
+                android:id="@+id/lh_bg_a"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+            <ImageView
+                android:id="@+id/lh_bg_b"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_nl_hero_scrim"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <android.opengl.GLSurfaceView
+                android:id="@+id/lh_player"
+                android:layout_width="@dimen/nl_player_w"
+                android:layout_height="@dimen/nl_player_h"
+                android:layout_marginEnd="22dp"
+                android:layout_marginBottom="34dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/lh_hero_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                android:maxWidth="150dp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:text=""
+                android:fontFamily="@font/minecraftia"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="3dp"
+                android:background="@drawable/bg_lh_nametag"
+                android:includeFontPadding="false"
+                android:shadowColor="#B3000000"
+                android:shadowDy="1"
+                android:shadowRadius="6"
+                app:layout_constraintStart_toStartOf="@id/lh_player"
+                app:layout_constraintEnd_toEndOf="@id/lh_player"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/nl_hero_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/lh_player"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <LinearLayout
+                            android:id="@+id/lh_launch_specs"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:background="@drawable/bg_lh_specs_pill"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="3dp">
+
+                            <ImageView
+                                android:id="@+id/lh_spec_java_icon"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:src="@drawable/ic_settings_java"
+                                app:tint="#9DA3B4"
+                                android:contentDescription="@null" />
+
+                            <TextView
+                                android:id="@+id/lh_spec_java_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:text="Java 21"
+                                android:textColor="#C5C8D4"
+                                android:textSize="11sp"
+                                android:fontFamily="sans-serif-medium"
+                                android:includeFontPadding="false" />
+
+                            <View
+                                android:layout_width="3dp"
+                                android:layout_height="3dp"
+                                android:layout_marginHorizontal="7dp"
+                                android:background="@drawable/dot_separator" />
+
+                            <ImageView
+                                android:id="@+id/lh_spec_ram_icon"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:src="@drawable/ic_settings_performance"
+                                app:tint="#9DA3B4"
+                                android:contentDescription="@null" />
+
+                            <TextView
+                                android:id="@+id/lh_spec_ram_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:text="4096 MB RAM"
+                                android:textColor="#C5C8D4"
+                                android:textSize="11sp"
+                                android:fontFamily="sans-serif-medium"
+                                android:includeFontPadding="false" />
+                        </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:includeFontPadding="false"
+                    android:text="Your world,"
+                    android:textColor="#FFFFFF"
+                    android:textSize="@dimen/nl_hero_title"
+                    android:textStyle="bold"
+                    android:shadowColor="#80000000"
+                    android:shadowDy="2"
+                    android:shadowRadius="6" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="your launcher."
+                    android:textColor="@color/nl_gold"
+                    android:textSize="@dimen/nl_hero_title"
+                    android:textStyle="bold"
+                    android:shadowColor="#80000000"
+                    android:shadowDy="2"
+                    android:shadowRadius="6" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:ellipsize="end"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:text="Fast, free and fully customisable Minecraft: Java Edition."
+                    android:textColor="#E6FFFFFF"
+                    android:textSize="@dimen/nl_hero_sub" />
+
+                <LinearLayout
+                    android:id="@+id/lh_launch_row"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <net.kdt.pojavlaunch.ui.PremiumPlayButtonView
+                                    android:id="@+id/lh_launch_button"
+                                    android:layout_width="150dp"
+                                    android:layout_height="@dimen/lh_launch_button_h">
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:orientation="horizontal"
+                                        android:gravity="center_vertical"
+                                        android:paddingHorizontal="24dp">
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/ic_play_arrow"
+                                            app:tint="#0E0E11"
+                                            android:contentDescription="@null" />
+
+                                        <TextView
+                                            android:id="@+id/lh_launch_label"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="10dp"
+                                            android:text="LAUNCH"
+                                            android:textColor="#0E0E11"
+                                            android:textSize="15sp"
+                                            android:textStyle="bold"
+                                            android:letterSpacing="0.12"
+                                            android:includeFontPadding="false" />
+                                    </LinearLayout>
+                                </net.kdt.pojavlaunch.ui.PremiumPlayButtonView>
+
+                    <FrameLayout
+                        android:id="@+id/lh_edit_btn"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_nl_circle"
+                        android:clickable="true"
+                        android:focusable="true">
+                        <ImageView
+                            android:layout_width="17dp"
+                            android:layout_height="17dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_edit_profile"
+                            app:tint="@color/nl_ink"
+                            android:contentDescription="Edit profile" />
+                    </FrameLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Launch / download progress pill (shown while a version downloads) -->
+        <LinearLayout
+                    android:id="@+id/lh_dl_pill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_lh_dl_pill"
+                    android:elevation="14dp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingTop="13dp"
+                    android:paddingBottom="14dp"
+                    android:visibility="gone"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="14dp"
+                    android:minWidth="248dp"
+                    app:layout_constraintWidth_max="300dp"
+                    app:layout_constraintStart_toStartOf="@id/nl_hero"
+                    app:layout_constraintTop_toTopOf="@id/nl_hero">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <!-- Animated glowing download glyph -->
+                        <FrameLayout
+                            android:id="@+id/lh_dl_icon_wrap"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/bg_lh_dl_icon">
+
+                            <ImageView
+                                android:id="@+id/lh_dl_icon"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_download"
+                                app:tint="#0E0C15"
+                                android:contentDescription="@null" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="11dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/minecraftia"
+                                android:text="LAUNCHING"
+                                android:textColor="#7DD3FC"
+                                android:textSize="8sp"
+                                android:letterSpacing="0.12"
+                                android:includeFontPadding="false" />
+
+                            <TextView
+                                android:id="@+id/lh_dl_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:text="Preparing…"
+                                android:textColor="#FFFFFF"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:includeFontPadding="false" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/lh_dl_percent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:gravity="end"
+                            android:fontFamily="@font/minecraftia"
+                            android:text="0%"
+                            android:textColor="#EDEAF7"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:includeFontPadding="false" />
+                    </LinearLayout>
+
+                    <ProgressBar
+                        android:id="@+id/lh_dl_bar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="7dp"
+                        android:layout_marginTop="12dp"
+                        android:max="100"
+                        android:progress="0"
+                        android:progressDrawable="@drawable/bg_lh_dl_track" />
+
+                    <TextView
+                        android:id="@+id/lh_dl_detail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text=""
+                        android:textColor="#B9B5C9"
+                        android:textSize="10.5sp"
+                        android:includeFontPadding="false" />
+                </LinearLayout>
+
+        <!-- ───────── INSTALLATIONS (profile carousel) ───────── -->
+        <TextView
+            android:id="@+id/nl_inst_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:includeFontPadding="false"
+            android:text="Installations"
+            android:textColor="@color/nl_ink"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nl_hero" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/lh_library"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/lh_carousel_height"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/lh_center_guide"
+            app:layout_constraintTop_toBottomOf="@id/nl_inst_title" />
+
+        <TextView
+            android:id="@+id/lh_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:visibility="gone"
+            android:text="Your library will live here — create your first instance to begin."
+            android:textColor="@color/nl_ink_soft"
+            android:textSize="12sp"
+            android:includeFontPadding="false"
+            app:layout_constraintStart_toStartOf="@id/lh_library"
+            app:layout_constraintTop_toTopOf="@id/lh_library"
+            app:layout_constraintBottom_toBottomOf="@id/lh_library" />
+
+        <!-- ───────── RIGHT COLUMN ───────── -->
+        <LinearLayout
+            android:id="@+id/nl_right_col"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toEndOf="@id/lh_center_guide"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nl_topbar"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <!-- What's New -->
+            <LinearLayout
+                android:id="@+id/nl_whatsnew"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:layout_marginBottom="6dp"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_nl_card"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="8dp"
+                android:clickable="true"
+                android:focusable="true">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:src="@drawable/ic_star"
+                        app:tint="@color/nl_gold_dark"
+                        android:contentDescription="@null" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp"
+                        android:includeFontPadding="false"
+                        android:text="What’s New?"
+                        android:textColor="@color/nl_ink"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
+                        android:text="Releases ›"
+                        android:textColor="@color/nl_ink_soft"
+                        android:textSize="9sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/bg_nl_art_news">
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_star"
+                            app:tint="#FFFFFF"
+                            android:contentDescription="@null" />
+                    </FrameLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="9dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:includeFontPadding="false"
+                            android:maxLines="1"
+                            android:text="MobileGlues 2.0 is here"
+                            android:textColor="@color/nl_ink"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:ellipsize="end"
+                            android:includeFontPadding="false"
+                            android:maxLines="2"
+                            android:text="A faster renderer for more devices."
+                            android:textColor="@color/nl_ink_soft"
+                            android:textSize="9sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Quick Links -->
+            <LinearLayout
+                android:id="@+id/nl_quicklinks"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4"
+                android:layout_marginBottom="6dp"
+                android:orientation="vertical"
+                android:background="@drawable/bg_nl_card"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="8dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginBottom="4dp"
+                    android:includeFontPadding="false"
+                    android:text="Quick Links"
+                    android:textColor="@color/nl_ink"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+                <LinearLayout
+                    android:id="@+id/nl_ql_website"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_nl_tile"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_globe"
+                        app:tint="#2A1B10"
+                        android:contentDescription="Website" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="Website"
+                        android:textColor="@color/nl_ink"
+                        android:textSize="8.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/nl_ql_patch"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_nl_tile"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_menu_news"
+                        app:tint="#2A1B10"
+                        android:contentDescription="Patch Notes" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="Patch Notes"
+                        android:textColor="@color/nl_ink"
+                        android:textSize="8.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/lh_btn_discord"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_nl_tile"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_brand_discord"
+                        app:tint="#2A1B10"
+                        android:contentDescription="Discord" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="Discord"
+                        android:textColor="@color/nl_ink"
+                        android:textSize="8.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+                <LinearLayout
+                    android:id="@+id/nl_ql_market"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_nl_tile"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_nav_mods"
+                        app:tint="#2A1B10"
+                        android:contentDescription="Market" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="Market"
+                        android:textColor="@color/nl_ink"
+                        android:textSize="8.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/nl_ql_skins"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_nl_tile"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_nav_skin"
+                        app:tint="#2A1B10"
+                        android:contentDescription="Skins" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="Skins"
+                        android:textColor="@color/nl_ink"
+                        android:textSize="8.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/lh_btn_youtube"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_nl_tile"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_brand_youtube"
+                        app:tint="#2A1B10"
+                        android:contentDescription="YouTube" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="YouTube"
+                        android:textColor="@color/nl_ink"
+                        android:textSize="8.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Join the community -->
+            <LinearLayout
+                android:id="@+id/nl_join"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_nl_card"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="Join the community"
+                        android:textColor="@color/nl_ink"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:maxLines="2"
+                        android:text="Share builds, get help and play with friends."
+                        android:textColor="@color/nl_ink_soft"
+                        android:textSize="8.5sp" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/nl_join_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="8dp"
+                    android:gravity="center"
+                    android:background="@drawable/bg_nl_btn_dark"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:includeFontPadding="false"
+                    android:paddingHorizontal="12dp"
+                    android:text="Join  ›"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

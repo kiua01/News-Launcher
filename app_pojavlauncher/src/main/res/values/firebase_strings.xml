@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Empty on purpose: News Launcher ships with no remote backend.
+         Put your own Firebase Realtime Database URL here (or in a real google-services.json)
+         to enable announcements / notifications / update prompts. -->
+    <string name="firebase_database_url" translatable="false"></string>
+</resources>
